@@ -1,0 +1,41 @@
+﻿@page "/fetchdata"
+
+
+<PageTitle>FetchData</PageTitle>
+
+<h1>Data From Timer</h1>
+<DataFromTimer />
+
+<EditForm Model="_dto" OnValidSubmit="FakeSubmit">
+    <div class="border border-dark">
+        <h1>Parent:</h1>
+        <div>Title @_dto.ParentTitle</div>
+        <div>
+            <label class="form-label">
+             Parent Number 1
+            </label>
+            <InputNumber TValue="int" @bind-Value="_dto.ParentNumber1" class="form-control" @bind-Value:after="UpdateState" />
+        </div>
+        <div>
+            <label class="form-label">
+                Parent Number 2
+            </label>
+            <InputNumber TValue="int" @bind-Value="_dto.ParentNumber2" class="form-control" @bind-Value:after="UpdateState" />
+        </div>
+        <div>
+            <label class="form-label">
+                Parent String 1
+            </label>
+            <InputText @bind-Value="_dto.ParentString1" class="form-control" @bind-Value:after="UpdateState" />
+        </div>
+    </div>
+    <div class="border border-dark">
+        <h1>Child</h1>
+        <DataBetweenParentAndChild @ref="_child"  OnDataUpdated="UpdateParentDtoFromChild"  _EditDto="_dto"/>
+        <button class="btn btn-primary" @onclick="LoadDataFromChild">Reload Child Data</button>
+
+    </div>
+    <button class="btn btn-primary" >Fake Save Button</button>
+</EditForm>
+
+

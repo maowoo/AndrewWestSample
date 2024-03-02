@@ -1,0 +1,15 @@
+﻿
+<div>Title: @_EditDto.ChildTitle</div>
+<div>
+    <label class="form-label">
+        Child Number 1
+    </label>
+    <InputNumber  TValue="int" @bind-Value="_EditDto.ChildNumber1" class="form-control" @bind-Value:after="UpdateParent"/>
+</div>
+
+<div>
+    <label class="form-label">
+        Child String  1
+    </label>
+    <InputText @bind-Value="_EditDto.ChildString1" class="form-control" @bind-Value:after="UpdateParent" />
+</div>
